@@ -1,0 +1,11 @@
+apply from: templates.library.android
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    // testing
+    testImplementation deps.test.junit
+    testImplementation deps.test.kotlin
+    testImplementation deps.test.mockito.kotlin
+    testImplementation deps.test.assertk
+    testImplementation deps.kotlin.test
+}

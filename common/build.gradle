@@ -1,0 +1,6 @@
+apply from: templates.library.android
+
+dependencies {
+    implementation deps.test.junit
+    implementation deps.rx.android
+}

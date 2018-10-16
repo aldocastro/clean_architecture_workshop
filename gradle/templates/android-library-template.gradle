@@ -1,0 +1,58 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion deps.android.build.compileSdkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion deps.android.build.minSdkVersion
+        targetSdkVersion deps.android.build.targetSdkVersion
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    lintOptions {
+        abortOnError false
+        lintConfig file("$rootProject.projectDir/lint.xml")
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+}
+
+dependencies {
+    // kotlin
+    implementation deps.kotlin.stdlib.core
+
+    // android
+    implementation deps.android.support.appCompat
+
+    // koin
+    implementation deps.koin.core
+
+    // rx
+    implementation deps.rx.kotlin
+    implementation deps.rx.android
+
+    // logging
+    implementation deps.timber
+
+    // testing
+    testImplementation deps.test.junit
+    testImplementation deps.test.kotlin
+    testImplementation deps.test.mockito.kotlin
+    testImplementation deps.test.assertk
+    testImplementation deps.kotlin.test
+    testImplementation deps.test.robolectric
+}
